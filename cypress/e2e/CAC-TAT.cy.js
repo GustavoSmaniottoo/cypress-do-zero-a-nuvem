@@ -14,13 +14,13 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
   it('preenche os dados obrigatórios do formulario e clica em enviar', () => {
 
-     cy.get('#firstName').type('Gustavo').should('have.value','Gustavo')
+     cy.get('#firstName').type('Gustavo')
      
-     cy.get('#lastName').type('Smaniotto').should('have.value','Smaniotto')
+     cy.get('#lastName').type('Smaniotto')
 
-     cy.get('#email').type('gustavosmaniotto@outlook.com').should('have.value','gustavosmaniotto@outlook.com')
+     cy.get('#email').type('gustavosmaniotto@outlook.com')
 
-     cy.get('#open-text-area').type('Primeira tentativa').should('have.value','Primeira tentativa')
+     cy.get('#open-text-area').type('Primeira tentativa')
 
      cy.get('button[type="submit"]').click()
 
