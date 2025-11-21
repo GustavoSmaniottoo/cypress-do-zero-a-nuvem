@@ -14,17 +14,64 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
   it('preenche os dados obrigatórios do formulario e clica em enviar', () => {
 
+    //pra entender o delay do type
+    const longText = Cypress._.repeat('abcdefghijklmnopqrstuvwxyz', 10) 
+
      cy.get('#firstName').type('Gustavo')
-     
      cy.get('#lastName').type('Smaniotto')
-
      cy.get('#email').type('gustavosmaniotto@outlook.com')
-
-     cy.get('#open-text-area').type('Primeira tentativa')
-
+     cy.get('#open-text-area').type(longText,{delay: 0})
      cy.get('button[type="submit"]').click()
-
      cy.get('.success').should('be.visible')
+  })
+
+  it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida',() => {
+
+  cy.get('#firstName').type('Gustavo')  
+  cy.get('#lastName').type('Smaniotto', )
+  cy.get('#email').type('gustavosmaniottooutlook.com')
+  cy.get('#open-text-area').type('esse teste verifica a mensagem de erro ao submeter o formulário com um email com formatação inválida',{delay: 40})
+  cy.get('button[type="submit"]').click()
+  cy.get('.error').should('be.visible')
+
+  })
+
+  it('verifica o numero de telefone', () => {
+
+    cy.get('#phone').type('telefone').should('have.value','')
+
+  })
+
+  it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () =>{
+
+    cy.get('#firstName').type('Gustavo')     
+    cy.get('#lastName').type('Smaniotto', )
+    cy.get('#email').type('gustavosmaniotto@outlook.com')
+    cy.get('#open-text-area').type('esse teste exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', {delay: 40})
+    cy.get('#phone-checkbox').check()
+    cy.get('button[type="submit"]').click()
+    cy.get('.error').should('be.visible')
+
+  })
+
+  it('preenche e limpa os campos nome, sobrenome, email e telefone', () =>{
+
+    cy.get('#firstName').type('Gustavo')     
+    cy.get('#lastName').type('Smaniotto')
+    cy.get('#email').type('gustavosmaniotto@outlook.com')
+    cy.get('#open-text-area').type('Esse campo deve ser limpo após os de cima',{delay: 40})
+
+    cy.get('#firstName').clear().should('have.value','')    
+    cy.get('#lastName').clear().should('have.value','')
+    cy.get('#email').clear().should('have.value','')
+    cy.get('#open-text-area').clear().should('have.value','')
+
+  })
+
+  it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios',()=>{
+
+    cy.get('button[type="submit"]').click()
+    cy.get('.error').should('be.visible')
   })
 
 })
