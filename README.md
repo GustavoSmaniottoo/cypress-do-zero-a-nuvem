@@ -34,5 +34,5 @@ Para executar os testes implementados (Lição 2), use os comandos na pasta raiz
 
 ### Contato
 
-linkedin.com/in/gustavosmaniottodeoliveira/
+linkedin.com/in/gustavosmaniottodeoliveira/ |
 gustavosmaniotto@outlook.com
