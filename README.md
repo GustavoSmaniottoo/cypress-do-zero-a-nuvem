@@ -1,28 +1,38 @@
-# 🌲 Cypress, do Zero à Nuvem ☁️
+# 📚 Repositório Dedicado aos Estudos: Cypress, do Zero à Nuvem
 
-👋 Seja bem-vindo(a)!
+Aqui eu registro uma parte minha jornada de aprendizado em Automação de Testes com Cypress.
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai amar esse curso. ❤️
+Com o objetivo  de construir uma base sólida para a transição de carreira para a área de QA, seguindo as melhores práticas e conceitos do mercado.
 
-## O que você vai aprender?
+---
 
-- Como configurar um projeto Cypress do zero
-- Como visitar páginas locais e remotas
-- Como lidar com os elementos mais comuns encontrados em aplicações web
-- Como testar upload de arquivos
-- Como realizar as mais diversas verificações de resultados esperados
-- Como criar comandos customizados
-- Como lidar com links que abrem em outra aba do navegador
-- Como rodar testes simulando as dimensões de um dispositivo móvel
-- Como resolver os mesmos problemas de diferentes formas, conhecendo a [API do Cypress](https://docs.cypress.io/api/table-of-contents)
-- Como criar uma documentação mínima para seu projeto de testes automatizados
-- Como executar os testes em um _workflow_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
-- Como integrar seu _workflow_ de integração contínua com o Cypress Cloud (o serviço de gestão de testes do Cypress na nuvem)
+## Progresso atual: Lição 2 - Interagindo com Elementos
 
-## Vamos começar?
+Até o momento, os seguintes conceitos foram aprendidos e aplicados em testes reais no projeto:
 
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
+### ✅ Módulo 1 & 2: Fundamentos e Interação (Concluído)
 
-___
+| Conceito Abordado | Status | Comentário/Prática |
+| :--- | :--- | :--- |
+| **Configuração de Ambiente** | ✅ | Setup completo do ambiente local (Git, NPM, VSCode) e configuração de acesso via SSH. |
+| **Organização (Mocha Hooks)** | ✅ | Uso do **`beforeEach()`** para garantir o isolamento e reset do ambiente (`cy.visit()`) antes de cada teste. |
+| **Comandos Essenciais** | ✅ | Aplicação de `cy.get()`, `.type()`, `.click()`, `.should()` e `cy.contains()` em diversos fluxos. |
+| **Validação Negativa** | ✅ | Criação de testes para rejeitar dados inválidos (e-mail, campo numérico) e verificar mensagens de erro (`.error`). |
+| **Otimização de Testes** | ✅ | Uso do objeto `options` (`{ delay: 0 }`) no `.type()` para acelerar a execução de digitação. |
+| **Limpeza de Campos** | ✅ | Uso e verificação do comando **`.clear()`**. |
+| **Ciclo Git Completo** | ✅ | Domínio da sequência `add -> commit -> push` e `pull` para sincronização em múltiplos dispositivos. |
 
-Este é um curso da **Escola Talking About Testing**.
+---
+
+## ⚙️ Execução dos Testes (Demonstração)
+
+Para executar os testes implementados (Lição 2), use os comandos na pasta raiz do projeto:
+
+1.  **Instalar Dependências:** `npm install`
+2.  **Abrir o Test Runner:** `npm run cy:open`
+3.  **Rodar em Terminal (Headless):** `npm test`
+
+### Contato
+
+linkedin.com/in/gustavosmaniottodeoliveira/
+gustavosmaniotto@outlook.com
