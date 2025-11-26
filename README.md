@@ -12,15 +12,18 @@ Até o momento, os seguintes conceitos foram aprendidos e aplicados em testes re
 
 ### ✅ Módulo 1 & 2: Fundamentos e Interação (Concluído)
 
-| Conceito Abordado | Status | Comentário/Prática |
+| Conceito Abordado | Status | Implementação Prática |
 | :--- | :--- | :--- |
-| **Configuração de Ambiente** | ✅ | Setup completo do ambiente local (Git, NPM, VSCode) e configuração de acesso via SSH. |
-| **Organização (Mocha Hooks)** | ✅ | Uso do **`beforeEach()`** para garantir o isolamento e reset do ambiente (`cy.visit()`) antes de cada teste. |
-| **Comandos Essenciais** | ✅ | Aplicação de `cy.get()`, `.type()`, `.click()`, `.should()` e `cy.contains()` em diversos fluxos. |
-| **Validação Negativa** | ✅ | Criação de testes para rejeitar dados inválidos (e-mail, campo numérico) e verificar mensagens de erro (`.error`). |
-| **Otimização de Testes** | ✅ | Uso do objeto `options` (`{ delay: 0 }`) no `.type()` para acelerar a execução de digitação. |
-| **Limpeza de Campos** | ✅ | Uso e verificação do comando **`.clear()`**. |
-| **Ciclo Git Completo** | ✅ | Domínio da sequência `add -> commit -> push` e `pull` para sincronização em múltiplos dispositivos. |
+| **Organização (Hooks)** | ✅ | Uso do **`beforeEach()`** para garantir o isolamento e reset do ambiente (`cy.visit()`) antes de cada teste. |
+| **Comandos Essenciais** | ✅ | Utilização de `cy.get()`, `.type()`, `.click()`, e refatoração com **`cy.contains()`**. |
+| **Validação Negativa** | ✅ | Criação de testes para rejeitar dados inválidos (e-mail, campo numérico) e validar mensagens de erro (`.error`). |
+| **Validação de Estado** | ✅ | Uso de **`.check()`**, **`.uncheck()`**, **`.clear()`** e `.should('have.value', '')` para verificação de campos. |
+| **Reutilização de Código** | ✅ | **Criação de Comandos Customizados** via **`Cypress.Commands.add`** para encapsular e reutilizar o preenchimento de formulário. |
+| **Otimização de Testes** | ✅ | Aplicação do objeto `{ delay: 0 }` no `.type()` e uso de `Cypress._.repeat()` para performance. |
+| **Fluxo Git Completo** | ✅ | Domínio da sequência `add -> commit -> push` e `pull` para sincronização em múltiplos dispositivos. |
+
+---
+
 
 ---
 
@@ -34,5 +37,5 @@ Para executar os testes implementados (Lição 2), use os comandos na pasta raiz
 
 ### Contato
 
-[linkedin.com/in/gustavosmaniottodeoliveira/ |](https://www.linkedin.com/in/gustavosmaniottodeoliveira/)
-gustavosmaniotto@outlook.com
+* [linkedin.com/in/gustavosmaniottodeoliveira ](https://www.linkedin.com/in/gustavosmaniottodeoliveira)
+* gustavosmaniotto@outlook.com

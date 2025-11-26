@@ -9,7 +9,6 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   
   cy.title().should('eq','Central de Atendimento ao Cliente TAT')
   //verifico se o titulo da pagina é igual ao esperado (o 'eq' significa 'equal' = igual)
-
   })
 
   it('preenche os dados obrigatórios do formulario e clica em enviar', () => {
@@ -21,7 +20,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
      cy.get('#lastName').type('Smaniotto')
      cy.get('#email').type('gustavosmaniotto@outlook.com')
      cy.get('#open-text-area').type(longText,{delay: 0})
-     cy.get('button[type="submit"]').click()
+     cy.contains('button','Enviar').click()
      cy.get('.success').should('be.visible')
   })
 
@@ -30,16 +29,15 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   cy.get('#firstName').type('Gustavo')  
   cy.get('#lastName').type('Smaniotto', )
   cy.get('#email').type('gustavosmaniottooutlook.com')
-  cy.get('#open-text-area').type('esse teste verifica a mensagem de erro ao submeter o formulário com um email com formatação inválida',{delay: 40})
-  cy.get('button[type="submit"]').click()
+  cy.get('#open-text-area')
+  .type('esse teste verifica a mensagem de erro ao submeter o formulário com um email com formatação inválida',{delay: 0})
+  cy.contains('button','Enviar').click()
   cy.get('.error').should('be.visible')
-
   })
 
   it('verifica o numero de telefone', () => {
 
     cy.get('#phone').type('telefone').should('have.value','')
-
   })
 
   it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () =>{
@@ -47,11 +45,11 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#firstName').type('Gustavo')     
     cy.get('#lastName').type('Smaniotto', )
     cy.get('#email').type('gustavosmaniotto@outlook.com')
-    cy.get('#open-text-area').type('esse teste exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', {delay: 40})
+    cy.get('#open-text-area')
+    .type('esse teste exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', {delay: 0})
     cy.get('#phone-checkbox').check()
-    cy.get('button[type="submit"]').click()
+    cy.contains('button','Enviar').click()
     cy.get('.error').should('be.visible')
-
   })
 
   it('preenche e limpa os campos nome, sobrenome, email e telefone', () =>{
@@ -59,19 +57,32 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#firstName').type('Gustavo')     
     cy.get('#lastName').type('Smaniotto')
     cy.get('#email').type('gustavosmaniotto@outlook.com')
-    cy.get('#open-text-area').type('Esse campo deve ser limpo após os de cima',{delay: 40})
-
+    cy.get('#open-text-area').type('Esse campo deve ser limpo após os de cima',{delay: 0})
     cy.get('#firstName').clear().should('have.value','')    
     cy.get('#lastName').clear().should('have.value','')
     cy.get('#email').clear().should('have.value','')
     cy.get('#open-text-area').clear().should('have.value','')
-
   })
 
   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios',()=>{
 
-    cy.get('button[type="submit"]').click()
+    cy.contains('button','Enviar').click()
     cy.get('.error').should('be.visible')
+  })
+
+  it('envia o formuário com sucesso usando um comando customizado',()=>{
+
+  const longText = Cypress._.repeat('abcdefghijklmnopqrstuvwxyz', 10) 
+
+  const data = {
+    firstName: 'Gustavo',
+    lastName: 'Smaniotto de Oliveira',
+    email: 'gustavosmaniotto@outlook.com',
+    text: longText
+  }
+
+  cy.fillMandatoryFieldsAndSubmit(data)
+  cy.get('.success').should('be.visible')    
   })
 
 })
