@@ -40,14 +40,16 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#phone').type('telefone').should('have.value','')
   })
 
-  it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () =>{
+  it.only('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () =>{
 
     cy.get('#firstName').type('Gustavo')     
     cy.get('#lastName').type('Smaniotto', )
     cy.get('#email').type('gustavosmaniotto@outlook.com')
     cy.get('#open-text-area')
     .type('esse teste exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', {delay: 0})
-    cy.get('#phone-checkbox').check()
+    cy.get('#phone-checkbox')
+      .check()
+        .should('be.checked')
     cy.contains('button','Enviar').click()
     cy.get('.error').should('be.visible')
   })
@@ -117,10 +119,34 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
   })
 
-  it.only('marca cada tipo de atendimento', ()=>{
+  it('marca cada tipo de atendimento', ()=>{
 
+    //uso o get para pegar todos os elementos do tipo radio
     cy.get('input[type="radio"]')
+      .each(tipoDeservico => { //uso o each para iterar sobre cada elemento encontrado
 
+        cy.wrap(tipoDeservico) //uso o wrap para envolver o elemento atual do loop e transformá-lo em um objeto Cypress 
+          .check()
+            .should('be.checked')
+        //sem o wrap, o tipoDeservico seria um elemento DOM puro
+      })
+
+  })
+
+  it('marca ambos checkboxes, depois desmarca o último',()=>{
+
+    cy.get('input[type="checkbox"]')
+      .each(itenscheckbox => {
+        cy.wrap(itenscheckbox)
+          .check()
+            .should('be.checked')
+      })
+    
+    cy.get('input[type="checkbox"]')
+      .last()
+        .uncheck()
+          .should('not.be.checked')
+    
   })
 
 
