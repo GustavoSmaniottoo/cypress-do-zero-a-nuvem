@@ -92,7 +92,6 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('#product')
       .select('YouTube')
         .should('have.value','youtube')
-
   })
 
   it('seleciona um produto (Mentoria) por seu valor (value)', ()=>{
@@ -100,7 +99,6 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('select')
       .select('mentoria')
         .should('have.value','mentoria')
-
   })
 
   it('seleciona um produto (Blog) por seu índice', ()=>{
@@ -108,7 +106,6 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('select')
       .select(1)
         .should('have.value', 'blog')
-
   })
 
   it('marca o tipo de atendimento "Feedback"',()=>{
@@ -146,7 +143,6 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .last()
         .uncheck()
           .should('not.be.checked')
-    
   })
 
   it('seleciona um arquivo da pasta fixtures', () => {
@@ -157,10 +153,9 @@ describe('Central de Atendimento ao Cliente TAT', () => {
           expect(input[0].files[0].name).to.equal('example.json')
 
         })
-
   })
 
-   it('seleciona um arquivo utilizando uma fixture para a qual foi dada um alias',() => {
+  it('seleciona um arquivo utilizando uma fixture para a qual foi dada um alias',() => {
 
    cy.fixture('example.json').as('arquivo')
 
@@ -169,7 +164,6 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .should(input => {
         expect(input[0].files[0].name).to.equal('example.json')
       })
-
   })
 
   it('seleciona um arquivo simulando um drag-and-drop',() => {
@@ -178,12 +172,26 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         .should(input => {
           expect(input[0].files[0].name).to.equal('example.json')
         })
+  })
+
+
+  it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', () => {
+
+    cy.contains('a', 'Política de Privacidade')
+      .should('have.attr','href','privacy.html')
+        .and('have.attr','target','_blank')
 
   })
 
- 
+  it('acessa a página da política de privacidade removendo o target e então clicando no link', () => {
+
+    cy.contains('a', 'Política de Privacidade')
+      .invoke('removeAttr','target')
+      .click()
+    
+    cy.title().should('eq','Central de Atendimento ao Cliente TAT - Política de Privacidade')
 
 
-
+  }) 
 
 })
