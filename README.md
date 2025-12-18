@@ -1,41 +1,65 @@
-# 📚 Repositório Dedicado aos Estudos: Cypress, do Zero à Nuvem
+# Repositório de Estudos: Cypress, do Zero à Nuvem
 
-Aqui eu registro uma parte minha jornada de aprendizado em Automação de Testes com Cypress.
-
-Com o objetivo  de construir uma base sólida para a transição de carreira para a área de QA, seguindo as melhores práticas e conceitos do mercado.
-
----
-
-## Progresso atual: Lição 2 - Interagindo com Elementos
-
-Até o momento, os seguintes conceitos foram aprendidos e aplicados em testes reais no projeto:
-
-### ✅ Módulo 1 & 2: Fundamentos e Interação (Concluído)
-
-| Conceito Abordado | Status | Implementação Prática |
-| :--- | :--- | :--- |
-| **Organização (Hooks)** | ✅ | Uso do **`beforeEach()`** para garantir o isolamento e reset do ambiente (`cy.visit()`) antes de cada teste. |
-| **Comandos Essenciais** | ✅ | Utilização de `cy.get()`, `.type()`, `.click()`, e refatoração com **`cy.contains()`**. |
-| **Validação Negativa** | ✅ | Criação de testes para rejeitar dados inválidos (e-mail, campo numérico) e validar mensagens de erro (`.error`). |
-| **Validação de Estado** | ✅ | Uso de **`.check()`**, **`.uncheck()`**, **`.clear()`** e `.should('have.value', '')` para verificação de campos. |
-| **Reutilização de Código** | ✅ | **Criação de Comandos Customizados** via **`Cypress.Commands.add`** para encapsular e reutilizar o preenchimento de formulário. |
-| **Otimização de Testes** | ✅ | Aplicação do objeto `{ delay: 0 }` no `.type()` e uso de `Cypress._.repeat()` para performance. |
-| **Fluxo Git Completo** | ✅ | Domínio da sequência `add -> commit -> push` e `pull` para sincronização em múltiplos dispositivos. |
+Neste repositório esta registrado uma parte da minha evolução em Automação de Testes End-to-End (E2E) com Cypress.
+O objetivo é consolidar conceitos fundamentais e avançados de QA, focando em boas práticas de arquitetura de testes e cenários reais de uso.
 
 ---
 
+## Stack Tecnológica
+
+* **Cypress:** Framework de automação
+* **JavaScript:** Linguagem de script
+* **Node.js:** Ambiente de execução
+* **Git/GitHub:** Versionamento e CI/CD
 
 ---
 
-## ⚙️ Execução dos Testes (Demonstração)
+## Competências Técnicas Desenvolvidas
 
-Para executar os testes implementados (Lição 2), use os comandos na pasta raiz do projeto:
+O que já fiz:
 
-1.  **Instalar Dependências:** `npm install`
-2.  **Abrir o Test Runner:** `npm run cy:open`
-3.  **Rodar em Terminal (Headless):** `npm test`
+| Domínio | Implementação Prática |
+| :--- | :--- |
+| **Interação com Elementos** | Manipulação de inputs textuais, botões e validação de estados (mensagens de erro, campos obrigatórios). |
+| **Seleção de Opções** | Automação de listas suspensas (Select), botões de rádio e caixas de seleção (Checkboxes), utilizando iterações em listas de elementos. |
+| **Upload de Arquivos** | Testes de upload via input e simulação de Drag-and-Drop, utilizando Fixtures e Aliases para gerenciamento de massa de dados. |
+| **Manipulação de DOM** | Tratamento de links externos (target="_blank") através da remoção de atributos HTML via invoke, permitindo testes de navegação na mesma aba. |
+| **Arquitetura de Testes** | Criação de Comandos Customizados (Cypress.Commands) para encapsulamento de lógica repetitiva e uso de Hooks (beforeEach) para pré-condições. |
+| **Responsividade** | Configuração de scripts para execução de testes simulando Viewports Mobile (410x860). |
 
-### Contato
+---
 
-* [linkedin.com/in/gustavosmaniottodeoliveira ](https://www.linkedin.com/in/gustavosmaniottodeoliveira)
-* gustavosmaniotto@outlook.com
+## Instruções de Execução
+
+Pré-requisito: Node.js instalado.
+
+### 1. Instalação das dependências
+```bash
+npm install
+```
+
+### 2. Execução (Desktop)
+Abre o Test Runner padrão do Cypress.
+```bash
+npm run cy:open
+```
+
+### 3. Execução (Mobile Viewport)
+Abre o Test Runner simulando um dispositivo móvel.
+```bash
+npm run cy:open:mobile
+```
+
+### 4. Execução Headless
+Executa a suíte de testes completa via terminal, sem interface gráfica.
+```bash
+npm run test
+nom run test:mobile
+```
+
+---
+
+## Contato
+
+* **LinkedIn:** [gustavosmaniottodeoliveira](https://www.linkedin.com/in/gustavosmaniottodeoliveira)
+* **Email:** gustavosmaniotto@outlook.com

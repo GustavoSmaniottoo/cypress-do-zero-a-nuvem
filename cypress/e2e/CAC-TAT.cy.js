@@ -174,7 +174,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         })
   })
 
-  it.only('seleciona um arquivo da pasta fixtures',() => {
+  it('seleciona um arquivo da pasta fixtures',() => {
     
     cy.get('input[id="file-upload"]')
       .selectFile('cypress/fixtures/example.json')
