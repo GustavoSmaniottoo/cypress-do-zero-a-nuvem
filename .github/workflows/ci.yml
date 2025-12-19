@@ -14,7 +14,5 @@ jobs:
         with:
           # Roda o seu comando customizado que já tem o --record
           command: npm run test:cloud
-          # IMPORTANTE: Diz pro Cypress NÃO tentar rodar npm start
-          start: false
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
